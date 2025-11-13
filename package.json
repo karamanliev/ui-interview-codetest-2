@@ -1,31 +1,12 @@
 {
-  "name": "generalist-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "mondoo-ui-exam",
+  "private": true,
   "scripts": {
-    "compile": "tsc",
-    "start": "npm run compile && node ./dist/index.js",
-    "dev": "tsx watch src/",
-    "test": "vitest run",
-    "test:watch": "vitest"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.17.1",
-  "type": "module",
-  "dependencies": {
-    "@apollo/server": "^5.1.0",
-    "@graphql-tools/load-files": "^7.0.1",
-    "@graphql-tools/merge": "^9.1.5",
-    "graphql": "^16.12.0"
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test"
   },
   "devDependencies": {
-    "@types/node": "^24.10.1",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3",
-    "vitest": "^2.1.8",
-    "@vitest/ui": "^2.1.8"
+    "concurrently": "^8.2.2"
   }
 }
