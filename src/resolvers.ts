@@ -2,7 +2,8 @@ import { getMetrics } from "@/services/metricsService";
 import { getRecommendations } from "@/services/recommendationsService";
 import { getTeams } from "@/services/teamsService";
 import { getUser } from "@/services/userService";
-import { getTickets } from "./services/ticketsService";
+import { getTickets } from "@/services/ticketsService";
+import { getReports } from "@/services/reportsService";
 
 export const resolvers = {
   Query: {
@@ -15,5 +16,7 @@ export const resolvers = {
       await getTeams(spaceId),
     tickets: async (_, { spaceId }: { spaceId: string }) =>
       await getTickets(spaceId),
+    reports: async (_, { spaceId }: { spaceId: string }) =>
+      await getReports(spaceId),
   },
 };
