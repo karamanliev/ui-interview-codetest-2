@@ -15,9 +15,9 @@ export const mockMetrics = [
   },
   {
     spaceId: "find-andy",
-    totalRisk: { value: 100.0, delta: 0.0 },
-    criticalExposures: { value: 0, delta: 0 },
-    compliance: { value: 100.0, delta: 0.0 },
-    speed: { value: 0, delta: 0 },
+    totalRisk: { value: 70.0, delta: 3.0 },
+    criticalExposures: { value: 14, delta: 2 },
+    compliance: { value: 33.0, delta: -6.7 },
+    speed: { value: 120, delta: 80 },
   },
 ];

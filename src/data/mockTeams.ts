@@ -21,4 +21,44 @@ const nasaTeams = [
   },
 ];
 
-export const mockTeams = [...nasaTeams];
+const planetarySocietyTeams = [
+  {
+    id: "europa-clipper",
+    name: "Europa Clipper",
+    spaceId: "planetary-society",
+  },
+  {
+    id: "jupiter-moons",
+    name: "Jupiter Moons",
+    spaceId: "planetary-society",
+  },
+  {
+    id: "saturn-rings",
+    name: "Saturn Rings",
+    spaceId: "planetary-society",
+  },
+];
+
+const findAndyTeams = [
+  {
+    id: "woodys-roundup",
+    name: "Woody's Roundup",
+    spaceId: "find-andy",
+  },
+  {
+    id: "space-rangers",
+    name: "Space Rangers",
+    spaceId: "find-andy",
+  },
+  {
+    id: "andys-room",
+    name: "Andy's Room",
+    spaceId: "find-andy",
+  },
+];
+
+export const mockTeams = [
+  ...nasaTeams,
+  ...planetarySocietyTeams,
+  ...findAndyTeams,
+];
