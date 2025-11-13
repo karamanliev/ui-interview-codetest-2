@@ -2,7 +2,7 @@ type Recommendations {
   """
   SpaceId is the space the recommendations are associated with.
   """
-  spaceId: ID
+  spaceId: ID!
   """
   Ready to fix is the number of findings that are ready to be fixed.
   """

@@ -1,14 +1,3 @@
-type Reports {
-  """
-  SpaceId is the space the reports are associated with.
-  """
-  spaceId: ID!
-  """
-  Reports is the list of reports.
-  """
-  reports: [Report!]!
-}
-
 type Report {
   """
   ID is the unique identifier for the report.
