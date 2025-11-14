@@ -9,6 +9,7 @@ import { getReports } from "@/services/reportsService";
 // Mock the delay utility to speed up tests
 vi.mock("@/services/utils", () => ({
   delay: vi.fn(() => Promise.resolve()),
+  validateSpaceId: vi.fn(() => true),
 }));
 
 describe("Services", () => {
