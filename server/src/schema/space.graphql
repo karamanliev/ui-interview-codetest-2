@@ -14,5 +14,5 @@ type Space {
   """
   teams is the teams associated with the space.
   """
-  teams: [Team!]!
+  teams: [Team!]
 }

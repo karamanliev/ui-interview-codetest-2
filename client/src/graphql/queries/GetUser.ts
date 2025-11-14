@@ -12,11 +12,6 @@ export const GET_USER = graphql(`
         id
         name
         avatar
-        teams {
-          id
-          name
-          spaceId
-        }
       }
     }
   }

@@ -2,7 +2,7 @@ type Query {
   user: User!
   recommendations(spaceId: ID!): Recommendations!
   metrics(spaceId: ID!): Metrics!
-  teams(spaceId: ID!): [Team!]!
+  teams(spaceId: ID!): [Team!]
   tickets(spaceId: ID!): [Ticket!]
   reports(spaceId: ID!): [Report!]
 }
