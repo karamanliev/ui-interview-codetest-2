@@ -4,6 +4,8 @@ Welcome to the UI Code Exam! This repository contains a full-stack application s
 
 ## What You're Building
 
+![Dashboard Screenshot](https://github.com/user-attachments/assets/9ddc6496-9227-4efa-ac27-3749776316f7)
+
 This is a pnpm monorepo containing:
 
 - **Server** (`/server`): A fully functional Apollo GraphQL server with mock data. This server provides all the data you'll need and is ready to use. No backend work is required.
