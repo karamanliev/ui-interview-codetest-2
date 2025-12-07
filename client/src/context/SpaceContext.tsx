@@ -6,11 +6,12 @@ import {
 } from "react";
 import { useQuery } from "@apollo/client/react";
 import { GET_USER } from "@/graphql/queries/GetUser";
-import type { Space } from "@/types/graphql";
+import type { Space, User } from "@/types/graphql";
 
 type SpaceContextType = {
   currentSpaceId: string | null;
   setCurrentSpaceId: React.Dispatch<React.SetStateAction<string | null>>;
+  user: User | null;
   spaces: Space[];
 };
 
@@ -18,6 +19,7 @@ const SpaceContext = createContext<SpaceContextType | undefined>(undefined);
 
 function SpaceProvider({ children }: PropsWithChildren) {
   const { data } = useQuery(GET_USER);
+  const user = data?.user || null;
   const spaces = data?.user?.spaces || [];
 
   const [selectedSpaceId, setSelectedSpaceId] = useState<string | null>(null);
@@ -28,6 +30,7 @@ function SpaceProvider({ children }: PropsWithChildren) {
       value={{
         currentSpaceId,
         setCurrentSpaceId: setSelectedSpaceId,
+        user,
         spaces,
       }}
     >
