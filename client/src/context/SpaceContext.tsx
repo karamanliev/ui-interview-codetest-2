@@ -13,12 +13,13 @@ type SpaceContextType = {
   setCurrentSpaceId: React.Dispatch<React.SetStateAction<string | null>>;
   user: User | null;
   spaces: Space[];
+  isLoading: boolean;
 };
 
 const SpaceContext = createContext<SpaceContextType | undefined>(undefined);
 
 function SpaceProvider({ children }: PropsWithChildren) {
-  const { data } = useQuery(GET_USER);
+  const { data, loading } = useQuery(GET_USER);
   const user = data?.user || null;
   const spaces = data?.user?.spaces || [];
 
@@ -32,6 +33,7 @@ function SpaceProvider({ children }: PropsWithChildren) {
         setCurrentSpaceId: setSelectedSpaceId,
         user,
         spaces,
+        isLoading: loading,
       }}
     >
       {children}
