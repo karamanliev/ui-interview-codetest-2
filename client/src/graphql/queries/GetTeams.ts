@@ -5,6 +5,7 @@ export const GET_TEAMS = graphql(`
     teams(spaceId: $spaceId) {
       id
       name
+      spaceId
     }
   }
 `);

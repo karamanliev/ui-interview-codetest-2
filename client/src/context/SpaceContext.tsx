@@ -9,22 +9,34 @@ import { GET_USER } from "@/graphql/queries/GetUser";
 import type { Space, User } from "@/types/graphql";
 
 type SpaceContextType = {
-  currentSpaceId: string | null;
-  setCurrentSpaceId: React.Dispatch<React.SetStateAction<string | null>>;
-  user: User | null;
+  currentSpaceId: string | undefined;
+  setCurrentSpaceId: (spaceId: string | undefined) => void;
+  user: User | undefined;
   spaces: Space[];
-  isLoading: boolean;
 };
 
 const SpaceContext = createContext<SpaceContextType | undefined>(undefined);
 
 function SpaceProvider({ children }: PropsWithChildren) {
-  const { data, loading } = useQuery(GET_USER);
-  const user = data?.user || null;
+  const { data, loading, error } = useQuery(GET_USER);
+  const user = data?.user;
   const spaces = data?.user?.spaces || [];
 
-  const [selectedSpaceId, setSelectedSpaceId] = useState<string | null>(null);
-  const currentSpaceId = selectedSpaceId ?? spaces[0]?.id;
+  const [selectedSpaceId, setSelectedSpaceId] = useState<string | undefined>(
+    undefined,
+  );
+  const currentSpaceId =
+    selectedSpaceId !== undefined ? selectedSpaceId : spaces[0]?.id;
+
+  // TODO: Create a skeleton component
+  if (loading) {
+    return <div>Global skeleton loading here...</div>;
+  }
+
+  // TODO: Create an error component (MUI Snackbar?)
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <SpaceContext.Provider
@@ -33,7 +45,6 @@ function SpaceProvider({ children }: PropsWithChildren) {
         setCurrentSpaceId: setSelectedSpaceId,
         user,
         spaces,
-        isLoading: loading,
       }}
     >
       {children}

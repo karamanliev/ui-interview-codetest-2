@@ -10,8 +10,8 @@ type SidebarItemProps = {
 
 type SidebarItemWithSubItemsProps = {
   title: string;
-  link?: string;
-  subItems: Omit<Team, "spaceId">[];
+  link?: never;
+  subItems?: Team[];
   subItemsLoading?: boolean;
 };
 
@@ -20,7 +20,7 @@ type Props = SidebarItemProps | SidebarItemWithSubItemsProps;
 function SidebarItem({ title, link, subItems, subItemsLoading }: Props) {
   if (!subItems) {
     return (
-      <NavLink to={link}>
+      <NavLink to={link ?? "#"}>
         <div>{title}</div>
       </NavLink>
     );
@@ -29,12 +29,15 @@ function SidebarItem({ title, link, subItems, subItemsLoading }: Props) {
   return (
     <>
       <div>{title}</div>
-      {subItemsLoading && <div>Loading the teams...</div>}
-      {subItems.map((item) => (
-        <NavLink key={item.id} to={`/team/${item.id}`}>
-          {item.name}
-        </NavLink>
-      ))}
+      {subItemsLoading ? (
+        <div>Loading the teams...</div>
+      ) : (
+        subItems?.map((item) => (
+          <div key={item.id} style={{ marginLeft: 20 }}>
+            <NavLink to={`/team/${item.id}`}>{item.name}</NavLink>
+          </div>
+        ))
+      )}
     </>
   );
 }
