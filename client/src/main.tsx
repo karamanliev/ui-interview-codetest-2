@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ApolloProvider } from "@apollo/client/react";
+import { BrowserRouter } from "react-router";
 import { client } from "@/apollo/client";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,7 +14,9 @@ createRoot(document.getElementById("root")!).render(
     <ApolloProvider client={client}>
       <ThemeProvider theme={appTheme}>
         <CssBaseline />
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </ApolloProvider>
   </StrictMode>
