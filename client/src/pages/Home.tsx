@@ -1,7 +1,12 @@
 type Props = {};
 
 function Home(props: Props) {
-  return <div>HOME</div>;
+  return (
+    <>
+      <title>Home</title>
+      <div>HOME</div>
+    </>
+  );
 }
 
 export default Home;
