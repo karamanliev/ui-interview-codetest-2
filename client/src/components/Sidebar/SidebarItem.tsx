@@ -1,3 +1,4 @@
+import type { Team } from "@/types/graphql";
 import { NavLink } from "react-router";
 
 type SidebarItemProps = {
@@ -10,7 +11,7 @@ type SidebarItemProps = {
 type SidebarItemWithSubItemsProps = {
   title: string;
   link?: string;
-  subItems: Array<{ title: string; link: string }>;
+  subItems: Omit<Team, "spaceId">[];
   subItemsLoading?: boolean;
 };
 
@@ -30,7 +31,9 @@ function SidebarItem({ title, link, subItems, subItemsLoading }: Props) {
       <div>{title}</div>
       {subItemsLoading && <div>Loading the teams...</div>}
       {subItems.map((item) => (
-        <NavLink to={`/team/${item.link}`}>{item.title}</NavLink>
+        <NavLink key={item.id} to={`/team/${item.id}`}>
+          {item.name}
+        </NavLink>
       ))}
     </>
   );
