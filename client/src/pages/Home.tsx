@@ -1,11 +1,15 @@
-type Props = {};
+import PageLayout from "@/components/layout/PageLayout";
 
-function Home(props: Props) {
+function Home() {
   return (
-    <>
-      <title>Home</title>
-      <div>HOME</div>
-    </>
+    <PageLayout
+      title="Home"
+      headerComponents={
+        <button onClick={() => console.log("btn")}>Button</button>
+      }
+    >
+      <div>Hello world</div>
+    </PageLayout>
   );
 }
 

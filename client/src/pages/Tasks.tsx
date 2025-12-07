@@ -1,11 +1,10 @@
-type Props = {};
+import PageLayout from "@/components/layout/PageLayout";
 
-function Tasks(props: Props) {
+function Tasks() {
   return (
-    <>
-      <title>Tasks</title>
-      <div>TASKS</div>
-    </>
+    <PageLayout title="Tasks">
+      <div>Hello world</div>
+    </PageLayout>
   );
 }
 
