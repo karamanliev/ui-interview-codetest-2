@@ -1,9 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  type PropsWithChildren,
-} from "react";
+import { createContext, use, useState, type PropsWithChildren } from "react";
 import { useQuery } from "@apollo/client/react";
 import { GET_USER } from "@/graphql/queries/GetUser";
 import type { Space, User } from "@/types/graphql";
@@ -35,7 +30,7 @@ function SpaceProvider({ children }: PropsWithChildren) {
   }
 
   return (
-    <SpaceContext.Provider
+    <SpaceContext
       value={{
         currentSpaceId,
         setCurrentSpaceId: setSelectedSpaceId,
@@ -45,12 +40,12 @@ function SpaceProvider({ children }: PropsWithChildren) {
       }}
     >
       {children}
-    </SpaceContext.Provider>
+    </SpaceContext>
   );
 }
 
 function useSpace() {
-  const context = useContext(SpaceContext);
+  const context = use(SpaceContext);
 
   if (!context) {
     throw new Error("Missing SpaceContext provider!");
