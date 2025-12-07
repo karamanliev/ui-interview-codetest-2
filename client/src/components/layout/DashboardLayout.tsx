@@ -3,21 +3,20 @@ import { Sidebar } from "@/components/Sidebar";
 import { Box, styled } from "@mui/material";
 import bgImage from "@/assets/bg.webp";
 
-const DashboardLayoutContainer = styled(Box)`
-  display: flex;
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.palette.background.default};
-  background-image: url(${bgImage});
-  background-size: cover;
-  background-position: top center;
-  background-attachment: fixed;
-`;
+const DashboardLayoutContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  minHeight: "100vh",
+  backgroundColor: theme.palette.background.default,
+  backgroundImage: `url(${bgImage})`,
+  backgroundSize: "cover",
+  backgroundPosition: "top center",
+  backgroundAttachment: "fixed",
+}));
 
-const MainContainer = styled("main")`
-  padding: ${({ theme }) => theme.spacing(16)};
-  min-height: 100vh;
-  flex-grow: 1;
-`;
+const MainContainer = styled("main")(({ theme }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(16),
+}));
 
 function DashboardLayout() {
   return (
