@@ -1,5 +1,9 @@
+import { useTranslation } from "@/i18n";
+
 function SearchButton() {
-  return <div></div>;
+  const { t } = useTranslation();
+
+  return <button>{t("common.search")}</button>;
 }
 
 export default SearchButton;

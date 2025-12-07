@@ -1,11 +1,14 @@
 import PageLayout from "@/components/layout/PageLayout";
+import SearchButton from "@/components/SearchButton";
 import { useSpace } from "@/context/SpaceContext";
 import { GET_METRICS } from "@/graphql/queries/GetMetrics";
 import { GET_RECOMMENDATIONS } from "@/graphql/queries/GetRecommendations";
 import { GET_TICKETS } from "@/graphql/queries/GetTickets";
+import { useTranslation } from "@/i18n";
 import { useQuery } from "@apollo/client/react";
 
 function Home() {
+  const { t } = useTranslation();
   const { currentSpaceId } = useSpace();
 
   const { data: recommendationsData, loading: isRecommendationsLoading } =
@@ -37,12 +40,7 @@ function Home() {
   );
 
   return (
-    <PageLayout
-      title="Home"
-      headerComponents={
-        <button onClick={() => console.log("btn")}>Button</button>
-      }
-    >
+    <PageLayout title={t("home.title")} headerComponents={<SearchButton />}>
       <div>
         <h2>Recommendations</h2>
         {isRecommendationsLoading ? (
