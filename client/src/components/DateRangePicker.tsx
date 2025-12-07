@@ -1,6 +1,4 @@
-type Props = {};
-
-function DateRangePicker(props: Props) {
+function DateRangePicker() {
   return <div></div>;
 }
 

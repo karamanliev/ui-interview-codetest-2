@@ -1,6 +1,4 @@
-type Props = {};
-
-function DataTable(props: Props) {
+function DataTable() {
   return <div></div>;
 }
 

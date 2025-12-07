@@ -1,6 +1,4 @@
-type Props = {};
-
-function RecommendationItem(props: Props) {
+function RecommendationItem() {
   return <div></div>;
 }
 

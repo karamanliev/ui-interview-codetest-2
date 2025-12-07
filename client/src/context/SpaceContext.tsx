@@ -13,12 +13,13 @@ type SpaceContextType = {
   setCurrentSpaceId: (spaceId: string | undefined) => void;
   user: User | undefined;
   spaces: Space[];
+  isUserLoading: boolean;
 };
 
 const SpaceContext = createContext<SpaceContextType | undefined>(undefined);
 
 function SpaceProvider({ children }: PropsWithChildren) {
-  const { data, loading, error } = useQuery(GET_USER);
+  const { data, loading: isUserLoading, error } = useQuery(GET_USER);
   const user = data?.user;
   const spaces = data?.user?.spaces || [];
 
@@ -27,11 +28,6 @@ function SpaceProvider({ children }: PropsWithChildren) {
   );
   const currentSpaceId =
     selectedSpaceId !== undefined ? selectedSpaceId : spaces[0]?.id;
-
-  // TODO: Create a skeleton component
-  if (loading) {
-    return <div>Global skeleton loading here...</div>;
-  }
 
   // TODO: Create an error component (MUI Snackbar?)
   if (error) {
@@ -45,6 +41,7 @@ function SpaceProvider({ children }: PropsWithChildren) {
         setCurrentSpaceId: setSelectedSpaceId,
         user,
         spaces,
+        isUserLoading,
       }}
     >
       {children}

@@ -1,6 +1,4 @@
-type Props = {};
-
-function SearchButton(props: Props) {
+function SearchButton() {
   return <div></div>;
 }
 

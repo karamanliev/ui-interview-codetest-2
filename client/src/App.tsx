@@ -1,6 +1,7 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import { Route, Routes } from "react-router";
+import DashboardLayoutSkeleton from "@/components/layout/DashboardLayoutSkeleton";
 import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Tasks = lazy(() => import("@/pages/Tasks"));
@@ -8,7 +9,7 @@ const Team = lazy(() => import("@/pages/Team"));
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading page...</div>}>
+    <Suspense fallback={<DashboardLayoutSkeleton />}>
       <Routes>
         <Route element={<DashboardLayout />}>
           <Route path="/" element={<Home />} />
