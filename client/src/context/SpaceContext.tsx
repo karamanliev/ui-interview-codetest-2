@@ -16,7 +16,7 @@ type SpaceContextType = {
 
 const SpaceContext = createContext<SpaceContextType | undefined>(undefined);
 
-export function SpaceProvider({ children }: PropsWithChildren) {
+function SpaceProvider({ children }: PropsWithChildren) {
   const { data } = useQuery(GET_USER);
   const spaces = data?.user?.spaces || [];
 
@@ -36,4 +36,14 @@ export function SpaceProvider({ children }: PropsWithChildren) {
   );
 }
 
-export const useSpace = () => useContext(SpaceContext);
+function useSpace() {
+  const context = useContext(SpaceContext);
+
+  if (!context) {
+    throw new Error("Missing SpaceContext provider!");
+  }
+
+  return context;
+}
+
+export { SpaceProvider, useSpace };
