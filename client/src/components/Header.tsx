@@ -8,7 +8,7 @@ type Props = {
 function Header({ title, children }: Props) {
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between">
-      <Typography variant="h1" component="div">
+      <Typography variant="body2" sx={{ fontSize: 36 }}>
         {title}
       </Typography>
       {children}

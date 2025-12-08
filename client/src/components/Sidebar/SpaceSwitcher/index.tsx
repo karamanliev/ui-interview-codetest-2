@@ -58,9 +58,11 @@ function SpaceSwitcher({ selected, options, onChange, showSkeleton }: Props) {
       onClick={() => setOpen(!open)}
       sx={{
         cursor: "pointer",
-        transition: "background-color 0.15s ease-in-out",
+        transition: "all 0.3s ease-in-out",
         "&:hover": {
           backgroundColor: "rgba(0, 0, 0, 0.3)",
+          boxShadow:
+            "0px 16px 16px rgba(0, 0, 0, 0.08), inset 1px 4px 6px rgba(255, 255, 255, 0.45)",
         },
       }}
     >

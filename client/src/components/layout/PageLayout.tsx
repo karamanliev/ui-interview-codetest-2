@@ -11,7 +11,7 @@ function PageLayout({ title, headerComponents, children }: Props) {
   return (
     <>
       <title>{title}</title>
-      <Stack>
+      <Stack gap={8}>
         <Header title={title}>{headerComponents}</Header>
         {children}
       </Stack>
