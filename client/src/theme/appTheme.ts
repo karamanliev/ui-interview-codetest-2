@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export const appTheme = createTheme({
+const theme = createTheme({
   palette: {
     mode: "dark",
     success: {
@@ -21,13 +21,17 @@ export const appTheme = createTheme({
       active: "#F8F5DE",
     },
   },
+  spacing: 4,
+});
+
+export const appTheme = createTheme(theme, {
   typography: {
     fontFamily:
       '"Mona Sans", "Instrument Sans", "Helvetica", "Arial", sans-serif',
     body1: {
       fontFamily: "Instrument Sans",
       fontSize: "12px",
-      color: "text.secondary",
+      color: theme.palette.text.secondary,
       fontWeight: 400,
     },
     body2: {
@@ -35,9 +39,8 @@ export const appTheme = createTheme({
       fontWeight: 600,
       fontSize: "15px",
       letterSpacing: "0.06em",
-      color: "text.primary",
+      color: theme.palette.text.primary,
       textTransform: "uppercase",
     },
   },
-  spacing: 4,
 });

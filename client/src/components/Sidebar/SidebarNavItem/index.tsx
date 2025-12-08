@@ -9,21 +9,16 @@ export type NavItemProps =
       title: string;
       link: string;
       subItems?: undefined;
-      subItemsLoading?: never;
+      showSkeleton?: never;
     }
   | {
       title: string;
       link?: undefined;
       subItems: Team[];
-      subItemsLoading?: boolean;
+      showSkeleton?: boolean;
     };
 
-function SidebarNavItem({
-  title,
-  link,
-  subItems,
-  subItemsLoading,
-}: NavItemProps) {
+function SidebarNavItem({ title, link, subItems, showSkeleton }: NavItemProps) {
   if (!subItems) {
     return (
       <StyledListItemButton component={NavLink} to={link ?? "#"}>
@@ -38,7 +33,7 @@ function SidebarNavItem({
     <CollapsibleNavItem
       title={title}
       subItems={subItems}
-      subItemsLoading={subItemsLoading}
+      showSkeleton={showSkeleton}
     />
   );
 }

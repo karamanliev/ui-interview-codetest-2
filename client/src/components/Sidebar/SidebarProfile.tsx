@@ -11,6 +11,7 @@ function SidebarProfile() {
       sx={{
         py: 24,
         alignItems: "center",
+        cursor: "pointer",
       }}
       onMouseEnter={() => setShowEmail(true)}
       onMouseLeave={() => setShowEmail(false)}

@@ -32,6 +32,8 @@ function Sidebar() {
           flexGrow: 1,
           display: "flex",
           flexDirection: "column",
+          overflowY: "auto",
+          scrollbarWidth: "none",
         }}
       >
         <Stack

@@ -16,7 +16,7 @@ import type { NavItemProps } from ".";
 
 type Props = Omit<NavItemProps, "link">;
 
-function CollapsibleNavItem({ title, subItems, subItemsLoading }: Props) {
+function CollapsibleNavItem({ title, subItems, showSkeleton }: Props) {
   const [open, setOpen] = useState(true);
 
   const toggleOpen = () => setOpen((prev) => !prev);
@@ -38,13 +38,13 @@ function CollapsibleNavItem({ title, subItems, subItemsLoading }: Props) {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <Stack component={List} sx={{ gap: 2, pb: 0 }}>
-          {subItemsLoading ? (
+          {showSkeleton ? (
             <CollapsibleNavItemSkeleton />
           ) : (
             subItems?.map((item, i) => (
               <Grow
                 key={item.id}
-                in={!subItemsLoading}
+                in={!showSkeleton}
                 timeout={250 * (i + 1)}
                 unmountOnExit
               >

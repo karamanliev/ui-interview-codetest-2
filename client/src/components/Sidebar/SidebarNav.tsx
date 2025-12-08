@@ -25,7 +25,7 @@ function SidebarNav({ currentSpaceId }: Props) {
       <SidebarNavItem
         title={t("teams.title")}
         subItems={teams}
-        subItemsLoading={loading}
+        showSkeleton={loading}
       />
     </Stack>
   );
