@@ -4,7 +4,7 @@ function CollapsibleNavItemSkeleton() {
   return (
     <>
       {Array.from({ length: 3 }).map((_, i) => (
-        <Fade key={i} in unmountOnExit>
+        <Fade key={i} in timeout={150} unmountOnExit>
           <ListItemButton disabled>
             <Skeleton
               variant="circular"

@@ -51,5 +51,8 @@ export const en = {
   common: {
     search: "Search",
     viewAll: "View all {{count}}",
+    fix: "Fix",
+    view: "View",
+    done: "Done!",
   },
 };
