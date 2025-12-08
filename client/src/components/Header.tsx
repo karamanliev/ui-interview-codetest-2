@@ -8,10 +8,18 @@ type Props = {
 function Header({ title, children }: Props) {
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between">
-      <Typography variant="body2" sx={{ fontSize: 36 }}>
+      <Typography variant="body2" sx={{ fontSize: 36, flexGrow: 1 }}>
         {title}
       </Typography>
-      {children}
+      <Stack
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 4,
+        }}
+      >
+        {children}
+      </Stack>
     </Stack>
   );
 }
