@@ -1,7 +1,7 @@
-import { Outlet } from "react-router";
-import { Sidebar } from "@/components/Sidebar";
-import { Box, styled } from "@mui/material";
 import bgImage from "@/assets/bg.webp";
+import Sidebar from "@/components/Sidebar";
+import { Box, styled } from "@mui/material";
+import { Outlet } from "react-router";
 
 const DashboardLayoutContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -9,7 +9,6 @@ const DashboardLayoutContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   backgroundImage: `url(${bgImage})`,
   backgroundSize: "cover",
-  backgroundPosition: "top center",
   backgroundAttachment: "fixed",
 }));
 

@@ -24,6 +24,20 @@ export const appTheme = createTheme({
   typography: {
     fontFamily:
       '"Mona Sans", "Instrument Sans", "Helvetica", "Arial", sans-serif',
+    body1: {
+      fontFamily: "Instrument Sans",
+      fontSize: "12px",
+      color: "text.secondary",
+      fontWeight: 400,
+    },
+    body2: {
+      fontFamily: "Mona Sans",
+      fontWeight: 600,
+      fontSize: "15px",
+      letterSpacing: "0.06em",
+      color: "text.primary",
+      textTransform: "uppercase",
+    },
   },
   spacing: 4,
 });
