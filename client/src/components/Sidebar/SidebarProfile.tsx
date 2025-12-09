@@ -1,4 +1,4 @@
-import { useSpace } from "@/context/SpaceContext";
+import useSpace from "@/hooks/useSpace";
 import { Avatar, Collapse, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 

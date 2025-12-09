@@ -1,9 +1,9 @@
+import ActionBox from "@/components/ActionBox/ActionBox";
+import StyledCard from "@/components/StyledCard";
 import { GET_RECOMMENDATIONS } from "@/graphql/queries/GetRecommendations";
 import { useTranslation } from "@/i18n";
 import { useQuery } from "@apollo/client/react";
 import { Box, Stack, Typography } from "@mui/material";
-import StyledCard from "../StyledCard";
-import RecommendationItem from "./RecommendationItem";
 import RecommendationsSkeleton from "./RecommendationsSkeleton";
 
 type Props = {
@@ -45,25 +45,25 @@ function Recommendations({ currentSpaceId }: Props) {
             flexGrow: 1,
           }}
         >
-          <RecommendationItem
-            recommendation={readyToFix ?? 0}
+          <ActionBox
+            action={readyToFix ?? 0}
             translationKey="home.recommendations.fixes"
             actionLabel={t("common.fix")}
           />
-          <RecommendationItem
-            recommendation={readyToReview ?? 0}
+          <ActionBox
+            action={readyToReview ?? 0}
             translationKey="home.recommendations.review"
             actionLabel={t("common.view")}
           />
-          <RecommendationItem
-            recommendation={approachingSla ?? 0}
+          <ActionBox
+            action={approachingSla ?? 0}
             translationKey="home.recommendations.tasks"
             actionLabel={t("common.view")}
           />
           {reports?.map((report) => (
-            <RecommendationItem
+            <ActionBox
               key={report.id}
-              recommendation={report.name}
+              action={report.name}
               translationKey="home.recommendations.quarterlyReport"
               translationTemplate="report"
               actionLabel={t("common.view")}

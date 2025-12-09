@@ -4,7 +4,7 @@ import { Box, Button, Fade, styled, Typography, Zoom } from "@mui/material";
 import { useState } from "react";
 
 type Props = {
-  recommendation: number | string;
+  action: number | string;
   translationKey: string;
   translationTemplate?: string;
   actionLabel?: string;
@@ -34,8 +34,8 @@ const StyledButton = styled(Button, {
   },
 }));
 
-function RecommendationItem({
-  recommendation,
+function ActionBox({
+  action,
   translationKey,
   translationTemplate = "count",
   actionLabel,
@@ -44,7 +44,7 @@ function RecommendationItem({
   const { t } = useTranslation();
   const [isClicked, setIsClicked] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
-  const hasRecommendation = recommendation !== 0;
+  const hasAction = action !== 0;
 
   const handleClick = () => {
     if (isClicked) return;
@@ -56,7 +56,7 @@ function RecommendationItem({
     }, 600);
   };
 
-  if (!hasRecommendation) {
+  if (!hasAction) {
     return null;
   }
 
@@ -111,7 +111,7 @@ function RecommendationItem({
         ) : (
           <>
             <Typography noWrap>
-              {t(translationKey, { [translationTemplate]: recommendation })}
+              {t(translationKey, { [translationTemplate]: action })}
             </Typography>
             {actionLabel && (
               <Box
@@ -133,4 +133,4 @@ function RecommendationItem({
   );
 }
 
-export default RecommendationItem;
+export default ActionBox;

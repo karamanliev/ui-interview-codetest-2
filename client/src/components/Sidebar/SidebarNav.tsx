@@ -1,6 +1,6 @@
 import { List, Stack } from "@mui/material";
 import { useTranslation } from "@/i18n";
-import SidebarNavItem from "./SidebarNavItem";
+import SidebarNavItem from "./SidebarNavItem/SidebarNavItem.tsx";
 import { GET_TEAMS } from "@/graphql/queries/GetTeams";
 import { useQuery } from "@apollo/client/react";
 

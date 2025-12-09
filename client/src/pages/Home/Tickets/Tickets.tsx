@@ -1,14 +1,30 @@
+import StyledCard from "@/components/StyledCard";
 import { GET_TICKETS } from "@/graphql/queries/GetTickets";
 import { useTranslation } from "@/i18n";
 import { useQuery } from "@apollo/client/react";
-import { Button, Stack, styled, Typography } from "@mui/material";
+import { Button, Skeleton, Stack, styled, Typography } from "@mui/material";
 import { useState } from "react";
-import StyledCard from "../StyledCard";
 import RemediationTable from "./RemediationTable";
 
 type Props = {
   currentSpaceId?: string;
 };
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  height: 26,
+  px: 4,
+  py: "6px",
+  borderRadius: "2px",
+  borderColor: theme.palette.text.secondary,
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    backgroundColor: theme.palette.text.secondary,
+    ".MuiTypography-root": {
+      color: theme.palette.primary.dark,
+      transition: "all 0.3s ease-in-out",
+    },
+  },
+}));
 
 function Tickets({ currentSpaceId }: Props) {
   const { t } = useTranslation();
@@ -23,22 +39,6 @@ function Tickets({ currentSpaceId }: Props) {
       skip: !currentSpaceId,
     },
   );
-
-  const StyledButton = styled(Button)(({ theme }) => ({
-    height: 26,
-    px: 4,
-    py: "6px",
-    borderRadius: "2px",
-    borderColor: theme.palette.text.secondary,
-    transition: "all 0.3s ease-in-out",
-    "&:hover": {
-      backgroundColor: theme.palette.text.secondary,
-      ".MuiTypography-root": {
-        color: theme.palette.primary.dark,
-        transition: "all 0.3s ease-in-out",
-      },
-    },
-  }));
 
   return (
     <StyledCard sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -60,11 +60,15 @@ function Tickets({ currentSpaceId }: Props) {
           variant="outlined"
           onClick={() => setShowAllTickets((prev) => !prev)}
         >
-          <Typography>
-            {t(showAllTickets ? "common.showLess" : "common.viewAll", {
-              count: ticketsData?.tickets?.length ?? 0,
-            })}
-          </Typography>
+          {isTicketsLoading || !currentSpaceId ? (
+            <Skeleton variant="text" width={60} height={12} />
+          ) : (
+            <Typography>
+              {t(showAllTickets ? "common.showLess" : "common.viewAll", {
+                count: ticketsData?.tickets?.length ?? 0,
+              })}
+            </Typography>
+          )}
         </StyledButton>
       </Stack>
 

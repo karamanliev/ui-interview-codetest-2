@@ -43,9 +43,12 @@ export const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-export const generateTableStyles = (showPagination: boolean) => ({
+export const generateTableStyles = (
+  showPagination: boolean,
+  pageSize: number,
+) => ({
   border: "none",
-  minHeight: !showPagination ? 0 : "630px",
+  minHeight: !showPagination ? 0 : `${(pageSize + 2) * 52 + 16}px`, // (pageSize + header + footer) * rowHeight + py padding
   borderRadius: "8px",
   overflow: "hidden",
   "--DataGrid-rowBorderColor": "transparent",

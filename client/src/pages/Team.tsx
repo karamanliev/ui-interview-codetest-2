@@ -1,4 +1,4 @@
-import PageLayout from "@/components/layout/PageLayout";
+import PageLayout from "@/components/PageLayout";
 import { useTranslation } from "@/i18n";
 import { useParams } from "react-router";
 

@@ -1,10 +1,10 @@
 import logo from "@/assets/logo.svg";
-import { useSpace } from "@/context/SpaceContext";
+import SpaceSwitcher from "@/components/SpaceSwitcher/SpaceSwitcher";
+import useSpace from "@/hooks/useSpace";
 import { Box, Stack, styled } from "@mui/material";
 import StyledCard from "../StyledCard";
 import SidebarNav from "./SidebarNav";
 import SidebarProfile from "./SidebarProfile";
-import SpaceSwitcher from "./SpaceSwitcher";
 
 const SidebarContainer = styled(Box)(({ theme }) => ({
   display: "flex",

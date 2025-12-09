@@ -1,5 +1,5 @@
 import { Select, MenuItem, Skeleton } from "@mui/material";
-import StyledCard from "../../StyledCard";
+import StyledCard from "@/components/StyledCard";
 
 type Props = {
   iconComponent?: React.ElementType;

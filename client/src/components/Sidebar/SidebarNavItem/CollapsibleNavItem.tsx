@@ -1,4 +1,4 @@
-import { useSpace } from "@/context/SpaceContext";
+import useSpace from "@/hooks/useSpace";
 import { ExpandMore } from "@mui/icons-material";
 import {
   Box,
@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router";
-import type { NavItemProps } from ".";
 import CollapsibleNavItemSkeleton from "./CollapsibleNavItemSkeleton";
 import { ColoredDot, StyledListItemButton } from "./navItemStyles";
+import type { NavItemProps } from "./SidebarNavItem";
 
 type Props = Omit<NavItemProps, "link">;
 

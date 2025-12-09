@@ -1,7 +1,7 @@
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import DashboardLayoutSkeleton from "@/components/layout/DashboardLayoutSkeleton";
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
+import DashboardLayout from "./components/DashboardLayout/DashboardLayout";
+import DashboardLayoutSkeleton from "./components/DashboardLayout/DashboardLayoutSkeleton";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Tasks = lazy(() => import("@/pages/Tasks"));

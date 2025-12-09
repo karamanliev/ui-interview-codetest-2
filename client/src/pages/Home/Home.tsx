@@ -1,14 +1,14 @@
 import DateRangePicker from "@/components/DateRangePicker";
-import PageLayout from "@/components/layout/PageLayout";
-import { Recommendations } from "@/components/Recommendations";
+import PageLayout from "@/components/PageLayout";
 import SearchButton from "@/components/SearchButton";
 import StyledCard from "@/components/StyledCard";
-import Tickets from "@/components/Tickets/Tickets";
-import { useSpace } from "@/context/SpaceContext";
 import { GET_METRICS } from "@/graphql/queries/GetMetrics";
+import useSpace from "@/hooks/useSpace.ts";
 import { useTranslation } from "@/i18n";
 import { useQuery } from "@apollo/client/react";
 import { Typography } from "@mui/material";
+import Recommendations from "./Recommendations/Recommendations.tsx";
+import Tickets from "./Tickets/Tickets";
 
 function Home() {
   const { t } = useTranslation();

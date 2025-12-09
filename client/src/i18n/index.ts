@@ -2,7 +2,7 @@ import { en } from "./en";
 
 export function useTranslation() {
   const t = (key: string, params?: Record<string, string | number>) => {
-    const text = key.split(".").reduce((obj: any, k) => obj?.[k], en) ?? key;
+    const text = key.split(".").reduce((obj: unknown, k) => (obj as Record<string, unknown>)?.[k], en) as string ?? key;
 
     if (!params) return text;
 

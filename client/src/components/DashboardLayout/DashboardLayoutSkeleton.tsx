@@ -1,4 +1,4 @@
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "@/components/Sidebar/Sidebar";
 import { Skeleton, Stack } from "@mui/material";
 import { DashboardLayoutContainer, MainContainer } from "./layoutStyles";
 
@@ -19,4 +19,3 @@ function DashboardLayoutSkeleton() {
 }
 
 export default DashboardLayoutSkeleton;
-
