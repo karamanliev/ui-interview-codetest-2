@@ -16,6 +16,7 @@ export const DashboardLayoutContainer = styled(Box)(({ theme }) => ({
 export const MainContainer = styled("main")(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(16),
+  overflow: "hidden",
 }));
 
 function DashboardLayout({ children }: PropsWithChildren) {
