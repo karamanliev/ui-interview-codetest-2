@@ -1,3 +1,4 @@
+import { useSpace } from "@/context/SpaceContext";
 import { ExpandMore } from "@mui/icons-material";
 import {
   Box,
@@ -10,16 +11,18 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router";
+import type { NavItemProps } from ".";
 import CollapsibleNavItemSkeleton from "./CollapsibleNavItemSkeleton";
 import { ColoredDot, StyledListItemButton } from "./navItemStyles";
-import type { NavItemProps } from ".";
 
 type Props = Omit<NavItemProps, "link">;
 
 function CollapsibleNavItem({ title, subItems, showSkeleton }: Props) {
   const [open, setOpen] = useState(true);
+  const { currentSpaceId } = useSpace();
 
   const toggleOpen = () => setOpen((prev) => !prev);
+  const shouldShowSkeleon = showSkeleton || !currentSpaceId;
 
   return (
     <Box>
@@ -38,13 +41,13 @@ function CollapsibleNavItem({ title, subItems, showSkeleton }: Props) {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <Stack component={List} sx={{ gap: 2, pb: 0 }}>
-          {showSkeleton ? (
+          {shouldShowSkeleon ? (
             <CollapsibleNavItemSkeleton />
           ) : (
             subItems?.map((item, i) => (
               <Grow
                 key={item.id}
-                in={!showSkeleton}
+                in={!shouldShowSkeleon}
                 timeout={250 * (i + 1)}
                 unmountOnExit
               >

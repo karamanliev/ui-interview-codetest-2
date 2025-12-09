@@ -2,7 +2,6 @@ import { useTranslation } from "@/i18n";
 import { Check } from "@mui/icons-material";
 import { Box, Button, Fade, styled, Typography, Zoom } from "@mui/material";
 import { useState } from "react";
-import RecommendationItemSkeleton from "./RecommendationsSkeleton";
 
 type Props = {
   recommendation: number | string;
@@ -12,28 +11,28 @@ type Props = {
   onClick?: () => void;
 };
 
-const StyledButton = styled(Button)<{ isClicked: boolean }>(
-  ({ isClicked, theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: theme.spacing(3),
-    background: "rgba(0, 0, 0, 0.1)",
-    borderRadius: "6px",
-    height: 38,
-    flex: 1,
-    cursor: isClicked ? "default" : "pointer",
-    position: "relative",
-    overflow: "hidden",
-    transition: "all 0.3s ease-in-out",
-    "&:hover": {
-      background: isClicked ? "transparent" : "rgba(245, 245, 245, 0.1)",
-    },
-    "& .MuiTouchRipple-child": {
-      backgroundColor: theme.palette.success.main,
-    },
-  }),
-);
+const StyledButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== "isClicked",
+})<{ isClicked: boolean }>(({ isClicked, theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: theme.spacing(3),
+  background: "rgba(0, 0, 0, 0.1)",
+  borderRadius: "6px",
+  height: 38,
+  flex: 1,
+  cursor: isClicked ? "default" : "pointer",
+  position: "relative",
+  overflow: "hidden",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    background: isClicked ? "transparent" : "rgba(245, 245, 245, 0.1)",
+  },
+  "& .MuiTouchRipple-child": {
+    backgroundColor: theme.palette.success.main,
+  },
+}));
 
 function RecommendationItem({
   recommendation,
@@ -45,6 +44,7 @@ function RecommendationItem({
   const { t } = useTranslation();
   const [isClicked, setIsClicked] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const hasRecommendation = recommendation !== 0;
 
   const handleClick = () => {
     if (isClicked) return;
@@ -55,6 +55,10 @@ function RecommendationItem({
       setIsFinished(true);
     }, 600);
   };
+
+  if (!hasRecommendation) {
+    return null;
+  }
 
   return (
     <StyledButton

@@ -23,6 +23,8 @@ function Recommendations({ currentSpaceId }: Props) {
   const { recommendations, reports } = recommendationsData || {};
   const { readyToFix, readyToReview, approachingSla } = recommendations || {};
 
+  const showSkeleton = isRecommendationsLoading || !currentSpaceId;
+
   return (
     <StyledCard sx={{ display: "flex", gap: 16 }}>
       <Box>
@@ -32,7 +34,7 @@ function Recommendations({ currentSpaceId }: Props) {
         <Typography>{t("home.recommendations.subtitle")}</Typography>
       </Box>
 
-      {isRecommendationsLoading ? (
+      {showSkeleton ? (
         <RecommendationsSkeleton />
       ) : (
         <Stack
@@ -60,6 +62,7 @@ function Recommendations({ currentSpaceId }: Props) {
           />
           {reports?.map((report) => (
             <RecommendationItem
+              key={report.id}
               recommendation={report.name}
               translationKey="home.recommendations.quarterlyReport"
               translationTemplate="report"
