@@ -1,18 +1,13 @@
-import { Fade, ListItemButton, ListItemText, Skeleton } from "@mui/material";
+import { ListItemButton, ListItemText, Skeleton } from "@mui/material";
 
 function CollapsibleNavItemSkeleton() {
   return (
     <>
       {Array.from({ length: 3 }).map((_, i) => (
-        <Fade key={i} in timeout={150} unmountOnExit>
-          <ListItemButton disabled>
-            <Skeleton
-              variant="circular"
-              sx={{ width: 12, height: 12, mr: 2 }}
-            />
-            <ListItemText primary={<Skeleton variant="text" />} />
-          </ListItemButton>
-        </Fade>
+        <ListItemButton key={i} disabled>
+          <Skeleton variant="circular" sx={{ width: 12, height: 12, mr: 2 }} />
+          <ListItemText primary={<Skeleton variant="text" />} />
+        </ListItemButton>
       ))}
     </>
   );

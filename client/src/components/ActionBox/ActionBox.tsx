@@ -25,9 +25,11 @@ const StyledButton = styled(Button, {
   cursor: isClicked ? "default" : "pointer",
   position: "relative",
   overflow: "hidden",
+  tranform: "translateY(0)",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
     background: isClicked ? "transparent" : "rgba(245, 245, 245, 0.1)",
+    transform: isClicked ? "none" : "translateY(-2px)",
   },
   "& .MuiTouchRipple-child": {
     backgroundColor: theme.palette.success.main,

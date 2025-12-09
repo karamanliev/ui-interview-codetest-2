@@ -1,4 +1,3 @@
-import useSpace from "@/hooks/useSpace";
 import { ExpandMore } from "@mui/icons-material";
 import {
   Box,
@@ -19,10 +18,8 @@ type Props = Omit<NavItemProps, "link">;
 
 function CollapsibleNavItem({ title, subItems, showSkeleton }: Props) {
   const [open, setOpen] = useState(true);
-  const { currentSpaceId } = useSpace();
 
   const toggleOpen = () => setOpen((prev) => !prev);
-  const shouldShowSkeleon = showSkeleton || !currentSpaceId;
 
   return (
     <Box>
@@ -41,13 +38,13 @@ function CollapsibleNavItem({ title, subItems, showSkeleton }: Props) {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <Stack component={List} sx={{ gap: 2, pb: 0 }}>
-          {shouldShowSkeleon ? (
+          {showSkeleton ? (
             <CollapsibleNavItemSkeleton />
           ) : (
             subItems?.map((item, i) => (
               <Grow
                 key={item.id}
-                in={!shouldShowSkeleon}
+                in={!showSkeleton}
                 timeout={250 * (i + 1)}
                 unmountOnExit
               >
