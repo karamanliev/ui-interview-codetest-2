@@ -105,12 +105,6 @@ function RemediationTable({
           },
         }}
         pageSizeOptions={[PAGE_SIZE]}
-        slotProps={{
-          loadingOverlay: {
-            variant: "skeleton",
-            noRowsVariant: "skeleton",
-          },
-        }}
         paginationModel={paginationModel}
         onPaginationModelChange={(model) => setPage(model.page)}
         hideFooter={!showPagination}
