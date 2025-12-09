@@ -23,4 +23,20 @@ describe("SearchButton - Search Animation", () => {
     const textLabel = screen.getByText("Search");
     expect(textLabel).toHaveStyle({ opacity: 0, width: 0 });
   });
+
+  it("shows toast with input value after submit", async () => {
+    const user = userEvent.setup();
+
+    renderWithProviders(<SearchButton />);
+
+    const searchButton = screen.getByRole("button");
+    await user.click(searchButton);
+
+    const searchInput = screen.getByPlaceholderText(/search/i);
+    await user.type(searchInput, "hello world");
+
+    await user.click(searchButton);
+
+    expect(await screen.findByText("hello world")).toBeInTheDocument();
+  });
 });

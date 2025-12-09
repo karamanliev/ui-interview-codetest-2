@@ -1,6 +1,12 @@
 import { useTranslation } from "@/i18n";
 import { ArrowRightRounded } from "@mui/icons-material";
-import { ClickAwayListener, Collapse, styled, TextField } from "@mui/material";
+import {
+  ClickAwayListener,
+  Collapse,
+  Snackbar,
+  styled,
+  TextField,
+} from "@mui/material";
 import { useState, type KeyboardEvent } from "react";
 
 const StyledSearchButton = styled("div")<{ isOpen: boolean }>(
@@ -40,10 +46,14 @@ function SearchButton() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   const onSubmit = () => {
     if (!searchValue) return;
     console.log("Submitted:", searchValue);
+    setToastMessage(searchValue);
+    setToastOpen(true);
     setSearchValue("");
     setOpen(false);
   };
@@ -61,40 +71,59 @@ function SearchButton() {
   };
 
   return (
-    <ClickAwayListener onClickAway={() => !searchValue && setOpen(false)}>
-      <StyledSearchButton
-        onClick={() => (open ? onSubmit() : setOpen(true))}
-        isOpen={open}
-        tabIndex={0}
-        role="button"
-      >
-        <Collapse
-          in={open}
-          timeout={300}
-          orientation="horizontal"
-          unmountOnExit
+    <>
+      <ClickAwayListener onClickAway={() => !searchValue && setOpen(false)}>
+        <StyledSearchButton
+          onClick={() => (open ? onSubmit() : setOpen(true))}
+          isOpen={open}
+          tabIndex={0}
+          role="button"
         >
-          <TextField
-            autoFocus
-            placeholder={t("common.search") + "..."}
-            onClick={(e) => e.stopPropagation()}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={onKeyDown}
-            sx={{
-              minWidth: "200px",
-              "& .MuiOutlinedInput-notchedOutline": {
-                border: "none",
-              },
-            }}
-          />
-        </Collapse>
+          <Collapse
+            in={open}
+            timeout={300}
+            orientation="horizontal"
+            unmountOnExit
+          >
+            <TextField
+              autoFocus
+              placeholder={t("common.search") + "..."}
+              onClick={(e) => e.stopPropagation()}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onKeyDown={onKeyDown}
+              sx={{
+                minWidth: "200px",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+              }}
+            />
+          </Collapse>
 
-        <TextLabel isOpen={open}>{t("common.search")}</TextLabel>
-        <IconWrapper isOpen={open}>
-          <ArrowRightRounded />
-        </IconWrapper>
-      </StyledSearchButton>
-    </ClickAwayListener>
+          <TextLabel isOpen={open}>{t("common.search")}</TextLabel>
+          <IconWrapper isOpen={open}>
+            <ArrowRightRounded />
+          </IconWrapper>
+        </StyledSearchButton>
+      </ClickAwayListener>
+
+      <Snackbar
+        open={toastOpen}
+        autoHideDuration={3000}
+        onClose={() => setToastOpen(false)}
+        message={toastMessage}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        slotProps={{
+          content: {
+            sx: {
+              "& .MuiSnackbarContent-message": {
+                textTransform: "none",
+              },
+            },
+          },
+        }}
+      />
+    </>
   );
 }
 
