@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router";
 import DashboardLayout from "./components/DashboardLayout/DashboardLayout";
 import DashboardLayoutSkeleton from "./components/DashboardLayout/DashboardLayoutSkeleton";
 
-const Home = lazy(() => import("@/pages/Home"));
+const Home = lazy(() => import("@/pages/Home/Home"));
 const Tasks = lazy(() => import("@/pages/Tasks"));
 const Team = lazy(() => import("@/pages/Team"));
 
