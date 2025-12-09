@@ -10,4 +10,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "mui-core": ["@mui/material"],
+          "mui-datagrid": ["@mui/x-data-grid"],
+        },
+      },
+    },
+  },
 });
