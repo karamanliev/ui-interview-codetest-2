@@ -9,6 +9,7 @@ export const GET_TICKETS = graphql(`
       createdAt
       ownerId
       progress
+      spaceId
     }
   }
 `);

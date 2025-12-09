@@ -1,3 +1,4 @@
+import { getDateRangeLabel } from "@/utils/dateUtils";
 import { FilterList } from "@mui/icons-material";
 import { Button, Popover, styled, Typography } from "@mui/material";
 import { useState } from "react";
@@ -29,27 +30,6 @@ function DateRangePicker() {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [selected, setSelected] = useState<DateRange>({ from: new Date() });
   const open = Boolean(anchorEl);
-
-  const getDateRangeLabel = ({ from, to }: DateRange) => {
-    if (!from) {
-      return "";
-    }
-
-    const startDate = new Date(from);
-
-    const monthName = startDate.toLocaleDateString("en-US", { month: "long" });
-    const startDay = startDate.getDate();
-    const year = startDate.getFullYear();
-
-    if (!to) {
-      return `${monthName} ${startDay}${getDaySuffix(startDay)} ${year}`;
-    }
-
-    const endDate = new Date(to);
-    const endDay = endDate.getDate();
-
-    return `${monthName} ${startDay}-${endDay}${getDaySuffix(endDay)} ${year}`;
-  };
 
   return (
     <>
@@ -90,19 +70,5 @@ function DateRangePicker() {
     </>
   );
 }
-
-const getDaySuffix = (day: number) => {
-  if (day > 3 && day < 21) return "th";
-  switch (day % 10) {
-    case 1:
-      return "st";
-    case 2:
-      return "nd";
-    case 3:
-      return "rd";
-    default:
-      return "th";
-  }
-};
 
 export default DateRangePicker;

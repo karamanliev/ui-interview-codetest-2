@@ -17,14 +17,14 @@ type Documents = {
     "\n  query GetMetrics($spaceId: ID!) {\n    metrics(spaceId: $spaceId) {\n      compliance {\n        delta\n        value\n      }\n      criticalExposures {\n        delta\n        value\n      }\n      speed {\n        delta\n        value\n      }\n      totalRisk {\n        delta\n        value\n      }\n    }\n  }\n": typeof types.GetMetricsDocument,
     "\n  query GetRecommendations($spaceId: ID!) {\n    recommendations(spaceId: $spaceId) {\n      spaceId\n      readyToFix\n      readyToReview\n      approachingSla\n    }\n    reports(spaceId: $spaceId) {\n      id\n      name\n    }\n  }\n": typeof types.GetRecommendationsDocument,
     "\n  query GetTeams($spaceId: ID!) {\n    teams(spaceId: $spaceId) {\n      id\n      name\n      spaceId\n    }\n  }\n": typeof types.GetTeamsDocument,
-    "\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n    }\n  }\n": typeof types.GetTicketsDocument,
+    "\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n      spaceId\n    }\n  }\n": typeof types.GetTicketsDocument,
     "\n  query GetUser {\n    user {\n      id\n      name\n      email\n      avatar\n      role\n      spaces {\n        id\n        name\n        avatar\n      }\n    }\n  }\n": typeof types.GetUserDocument,
 };
 const documents: Documents = {
     "\n  query GetMetrics($spaceId: ID!) {\n    metrics(spaceId: $spaceId) {\n      compliance {\n        delta\n        value\n      }\n      criticalExposures {\n        delta\n        value\n      }\n      speed {\n        delta\n        value\n      }\n      totalRisk {\n        delta\n        value\n      }\n    }\n  }\n": types.GetMetricsDocument,
     "\n  query GetRecommendations($spaceId: ID!) {\n    recommendations(spaceId: $spaceId) {\n      spaceId\n      readyToFix\n      readyToReview\n      approachingSla\n    }\n    reports(spaceId: $spaceId) {\n      id\n      name\n    }\n  }\n": types.GetRecommendationsDocument,
     "\n  query GetTeams($spaceId: ID!) {\n    teams(spaceId: $spaceId) {\n      id\n      name\n      spaceId\n    }\n  }\n": types.GetTeamsDocument,
-    "\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n    }\n  }\n": types.GetTicketsDocument,
+    "\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n      spaceId\n    }\n  }\n": types.GetTicketsDocument,
     "\n  query GetUser {\n    user {\n      id\n      name\n      email\n      avatar\n      role\n      spaces {\n        id\n        name\n        avatar\n      }\n    }\n  }\n": types.GetUserDocument,
 };
 
@@ -57,7 +57,7 @@ export function graphql(source: "\n  query GetTeams($spaceId: ID!) {\n    teams(
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n    }\n  }\n"): (typeof documents)["\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n    }\n  }\n"];
+export function graphql(source: "\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n      spaceId\n    }\n  }\n"): (typeof documents)["\n  query GetTickets($spaceId: ID!) {\n    tickets(spaceId: $spaceId) {\n      id\n      title\n      health\n      createdAt\n      ownerId\n      progress\n      spaceId\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
