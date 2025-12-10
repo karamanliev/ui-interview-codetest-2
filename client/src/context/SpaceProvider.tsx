@@ -14,23 +14,21 @@ function SpaceProvider({ children }: PropsWithChildren) {
   const currentSpaceId =
     selectedSpaceId !== undefined ? selectedSpaceId : spaces[0]?.id;
 
-  // TODO: Create an error component (MUI Snackbar?)
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
   return (
-    <SpaceContext
-      value={{
-        currentSpaceId,
-        setCurrentSpaceId: setSelectedSpaceId,
-        user,
-        spaces,
-        isUserLoading,
-      }}
-    >
-      {children}
-    </SpaceContext>
+    <>
+      {error && <div>Error: {error.message}</div>}
+      <SpaceContext
+        value={{
+          currentSpaceId,
+          setCurrentSpaceId: setSelectedSpaceId,
+          user,
+          spaces,
+          isUserLoading,
+        }}
+      >
+        {children}
+      </SpaceContext>
+    </>
   );
 }
 
